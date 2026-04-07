@@ -25,6 +25,8 @@ sim = OriginIR_Simulator()
 print(sim.simulate_shots(circuit.originir, shots=1000))
 ```
 
+第一次使用？建议先阅读 [快速上手](https://qpanda-lite.readthedocs.io/en/latest/source/guide/quickstart.html) 指南。
+
 ## Status
 
 🚧 Actively developing. API may change.
@@ -60,24 +62,6 @@ print(sim.simulate_shots(circuit.originir, shots=1000))
 
 ## Installation
 
-### Supported Platforms
-
-- Windows
-- Linux (partially tested)
-- macOS (partially tested)
-
-### Requirements
-
-- Python ≥ 3.8
-
-#### Optional Dependencies
-
-| Feature | Install |
-|---------|---------|
-| **Quafu execution** | `pip install pyquafu` |
-| **Qiskit execution** | `pip install qiskit qiskit-ibm-provider qiskit-ibmq-provider` |
-| **C++ simulator** | CMake ≥ 3.1, C++ compiler with C++14 support (MSVC / gcc / clang) |
-
 ### pip (Recommended)
 
 ```bash
@@ -85,6 +69,8 @@ pip install qpandalite
 ```
 
 Python 3.9 – 3.12 supported.
+
+详细安装方式与可选依赖见 [安装指南](https://qpanda-lite.readthedocs.io/en/latest/source/guide/installation.html)。
 
 ### Build from Source
 
@@ -116,30 +102,13 @@ pip install .
 
 ### 项目结构
 
-```
-QPanda-lite/
-├── qpandalite/                  # Python 前端
-│   ├── circuit_builder/         # 量子线路构建（Circuit 类）
-│   ├── simulator/                # 本地模拟器
-│   │   ├── originir_simulator.py    # OriginIR 模拟器
-│   │   ├── qasm_simulator.py        # QASM 模拟器
-│   │   ├── opcode_simulator.py      # Opcode 底层模拟器
-│   │   └── error_model.py           # 噪声模型
-│   ├── qasm/                   # OpenQASM 2.0 解析器
-│   ├── originir/               # OriginIR 解析器
-│   ├── task/                   # 任务提交（OriginQ / Quafu / IBM）
-│   ├── transpiler/             # 电路转译（Qiskit / OriginIR 互转）
-│   ├── analyzer/               # 结果分析（期望值计算等）
-│   └── qcloud_config/          # 各平台云配置
-├── docs/                       # Sphinx 文档
-├── QPandaLiteCpp/              # C++ 后端（pybind11）
-├── test/                       # 单元测试
-└── setup.py
-```
+完整项目结构与各模块说明请参见 [在线文档](https://qpanda-lite.readthedocs.io/)。
 
 ---
 
 ## Quick Start
+
+以下是最常见的用法概览，更多进阶内容请参见 [快速上手](https://qpanda-lite.readthedocs.io/en/latest/source/guide/quickstart.html)。
 
 ### 1. Build a Circuit
 
@@ -172,24 +141,7 @@ print(c.circuit)
 | Convert result | `originq.convert_originq_result(results, style='keyvalue', prob_or_shots='prob', key_style='bin')` | Styles: `keyvalue` / `list` |
 | Expectation | `calculate_expectation(result, ['ZII', 'IZI', 'IIZ'])` | Diagonal Hamiltonians only |
 
-#### 2.1 OriginQ
-
-1. Create config — see [`qcloud_config_template/originq_template.py`](qcloud_config_template/originq_template.py)
-2. Call `create_originq_online_config` with token, URLs, group_size
-3. `originq_online_config.json` will be generated in your working directory
-4. Submit tasks to the online chip
-
-**Dummy mode** — use `create_originq_dummy_config` to simulate locally without accessing real hardware.
-
-#### 2.2 Quafu
-
-1. Create config — see [`qcloud_config_template/quafu_template.py`](qcloud_config_template/quafu_template.py)
-2. Call `create_quafu_online_config` with token, URLs, group_size
-3. Submit tasks
-
-#### 2.3 IBM
-
-*Coming soon.*
+各平台（OriginQ / Quafu / IBM）的详细配置与提交方式请参见 [提交任务指南](https://qpanda-lite.readthedocs.io/en/latest/source/guide/submit_task.html)。
 
 ### 3. Circuit Simulation
 
@@ -216,6 +168,8 @@ res = sim.simulate(originir)
 print(res)
 print(sim.state)
 ```
+
+更多模拟器选项与噪声模型请参见 [模拟器指南](https://qpanda-lite.readthedocs.io/en/latest/source/guide/simulation.html)。
 
 ---
 
