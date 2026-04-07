@@ -1,6 +1,40 @@
 # 本地模拟
 
-QPanda-lite 提供多种本地模拟器，支持无噪声和带噪声的量子线路模拟。
+## 什么时候进入本页
+
+当你已经有一条线路，想在本地验证结果、查看概率分布、做多次采样，或比较不同模拟后端时，进入本页。
+
+本页解决的核心问题是：**如何把已经写好的线路跑起来，并根据目标选择合适的模拟方式与后端**。
+
+## 本页解决的问题
+
+- 如何把已有线路送入模拟器
+- 如何查看概率测量、状态向量、多次采样等不同输出
+- 如何区分 OriginIR、QASM、Opcode 等不同模拟入口
+- 如何根据目标选择 statevector、density matrix、density matrix_qutip 等后端
+- 如何在本地验证时识别已知限制与风险
+
+## 前置条件
+
+阅读本页前，默认你已经完成以下至少一项：
+
+- 已经会使用 `Circuit` 构建基础线路
+- 已经拿到了 `originir` 或 `qasm` 字符串
+- 已经完成 [快速上手](quickstart.md) 中的最小示例
+
+如果你还不清楚如何创建线路、添加量子门或导出线路格式，建议先阅读 [构建量子线路](circuit.md)。
+
+## 推荐阅读顺序
+
+建议按以下顺序阅读本页内容：
+
+1. **OriginIR 模拟器** — 先跑通最常见的本地模拟路径
+2. **概率测量 / 状态向量 / 多次采样** — 理解不同输出类型分别回答什么问题
+3. **QASM 模拟器** — 当你的输入是 OpenQASM 2.0 时使用
+4. **Opcode 模拟器** — 需要底层控制或特定后端时再进入
+5. **带噪声模拟** — 当你需要加入噪声模型时阅读
+6. **后端对比** — 根据验证目标选择不同后端
+7. **已知限制** — 在使用 density matrix 或复杂噪声路径前优先确认
 
 ## OriginIR 模拟器
 
@@ -96,6 +130,7 @@ prob = sim.simulate_pmeasure(circuit.originir)
 ## 已知限制
 
 - `crx`/`crz`/`cy` 受控旋转门在 density matrix 后端存在 bug（多门组合时出错），详见 [已知问题](./installation.md#known-issues)。
+- `controlled_by` 在 density matrix 路径下的模拟结果不正确。
 - `statevector` 后端无法模拟噪声。
 - 多比特门（> 2）在 density matrix 后端支持有限。
 
@@ -107,3 +142,8 @@ prob = sim.simulate_pmeasure(circuit.originir)
 - `qpandalite.simulator.OpcodeSimulator`
 - `qpandalite.simulator.OriginIR_Simulator`
 - `qpandalite.simulator.QASM_Simulator`
+
+## 下一步
+
+- 如果你发现自己仍不清楚线路该如何表达、量子门如何组织，回看 [构建量子线路](circuit.md)。
+- 如果你已经完成本地验证，并准备把线路提交到云平台或真机执行，进入 [提交任务](submit_task.md)。这一步开始关注的将不再是本地后端选择，而是平台配置、任务提交、状态查询与远端结果获取。

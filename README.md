@@ -171,6 +171,8 @@ print(sim.state)
 
 更多模拟器选项与噪声模型请参见 [模拟器指南](https://qpanda-lite.readthedocs.io/en/latest/source/guide/simulation.html)。
 
+本地跑通后准备上云或真机？继续阅读 [提交任务指南](https://qpanda-lite.readthedocs.io/en/latest/source/guide/submit_task.html)。
+
 ---
 
 ## Documentation
