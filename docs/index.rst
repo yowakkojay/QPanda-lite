@@ -68,10 +68,10 @@ QPanda-lite 是一个 Python 原生、轻量且强调透明性的量子计算框
 2. :doc:`source/guide/quickstart`
 3. :doc:`source/guide/submit_task`
 
-**如果你想先理解语言规范：**
+**如果你需要理解格式或做格式互转：**
 
-- :doc:`source/guide/originir`
-- :doc:`source/guide/qasm`
+- :doc:`source/guide/originir` — OriginIR 格式说明与使用场景
+- :doc:`source/guide/qasm` — QASM 格式说明与格式互转操作
 
 **如果你更关心底层能力与分析：**
 
@@ -91,7 +91,7 @@ QPanda-lite 是一个 Python 原生、轻量且强调透明性的量子计算框
 
 .. toctree::
    :maxdepth: 2
-   :caption: 语言规范
+   :caption: 格式互转与语言接口
 
    source/guide/originir
    source/guide/qasm
