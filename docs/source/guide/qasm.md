@@ -111,9 +111,9 @@ originir_str = translate_qasm2_to_originir(qasm_str)
 | ZZ        | `rzz(θ)` | $e^{-i \frac{\theta}{2} Z \otimes Z} = \begin{bmatrix} e^{-i\theta/2} & 0 & 0 & 0 \\ 0 & e^{i\theta/2} & 0 & 0 \\ 0 & 0 & e^{i\theta/2} & 0 \\ 0 & 0 & 0 & e^{-i\theta/2} \end{bmatrix}$ |
 | XY        | `rxy(θ)` | $e^{-i \frac{\theta}{2} \left(\frac{1}{2}(X\otimes X+Y\otimes Y)\right)} = \begin{bmatrix} 1 & 0 & 0 & 0 \\ 0 & \cos(\theta/2) & -i\sin(\theta/2) & 0 \\ 0 & -i\sin(\theta/2) & \cos(\theta/2) & 0 \\ 0 & 0 & 0 & 1 \end{bmatrix}$ |
 
-## 相关页面
+## 下一步
 
-- [OriginIR](originir.md) — OriginIR 格式详解
-- [构建量子线路](circuit.md) — 如何用 `Circuit` API 构建线路并导出格式
-- [本地模拟](simulation.md) — 使用 QASM 模拟器运行线路
-- [提交任务](submit_task.md) — 将线路提交到各平台真机运行（Quafu、IBM 使用 QASM 格式）
+- 如果你还不知道如何构建线路，先阅读 [构建量子线路](circuit.md)
+- 如果你想用 QASM 文本直接模拟，见 [本地模拟](simulation.md)
+- 如果你想提交到 Quafu 或 IBM 平台，见 [提交任务](submit_task.md)
+- 如果你需要了解 OriginIR 格式，见 [OriginIR](originir.md)

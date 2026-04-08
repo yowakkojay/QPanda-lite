@@ -1,6 +1,6 @@
-# 提交任务到量子云平台
+# 提交任务到量子云平台 {#guide-submit-task}
 
-## 什么时候进入本页
+## 什么时候进入本页 {#guide-submit-task-when-to-read}
 
 当你已经完成本地线路构建，并且已经通过 [快速上手](quickstart.md) 或 [本地模拟](simulation.md) 跑通了最小示例，接下来如果你希望：
 
@@ -12,7 +12,7 @@
 
 本页讨论的是**远端任务提交路径**，它解决的是“如何把已经在本地验证过的线路交给外部平台执行”的问题，而不是“如何在本地验证线路是否正确”。
 
-## 本页解决的问题
+## 本页解决的问题 {#guide-submit-task-problems}
 
 - 什么时候应从本地模拟切换到提交任务路径
 - 提交到云平台前需要准备哪些配置
@@ -30,7 +30,7 @@
 
 如果你还不确定线路是否正确、输出是否合理，建议先留在本地模拟路径，不要直接进入远端提交。
 
-## 通用流程
+## 通用流程 {#guide-submit-task-flow}
 
 无论选择哪个平台，远端任务提交通常都遵循以下流程：
 
@@ -42,7 +42,16 @@
 
 与本地模拟相比，这条路径多出了平台账号、配置文件、网络访问、任务排队与远端状态查询等因素。
 
-## 平台选择说明
+## 提交任务入口总览 {#guide-submit-task-entry-overview}
+
+在 QPanda-lite 中，“提交任务”指的是**把已经完成本地验证的线路交给外部平台执行，并通过任务 ID 查询远端状态与结果**。进入本页前，建议先区分它与“本地模拟”的边界：
+
+- 本地模拟：在当前环境直接运行线路，重点是验证线路是否正确，以及如何选择本地模拟后端。
+- 提交任务：把线路交给云平台或真机执行，重点是平台配置、任务提交、状态查询与结果获取。
+
+如果你仍在反复修改线路结构、量子门或输出解释，说明你还处在本地验证阶段，建议先回到 [本地模拟](simulation.md#guide-simulation)。
+
+## 平台选择说明 {#guide-submit-task-platform-selection}
 
 在阅读具体平台小节前，建议先按“定位 / 适用场景 / 当前状态”理解几条路径的区别：
 
@@ -58,7 +67,7 @@
 
 ## 平台分节
 
-### OriginQ Cloud
+### OriginQ Cloud {#guide-submit-task-originq-cloud}
 
 这是当前应优先引导的真实云平台提交路径，适合已经完成本地验证、准备把线路提交到真实云端或真机执行的读者。
 
@@ -88,7 +97,7 @@ result = query_by_taskid(task_id)
 print(result)
 ```
 
-### OriginQ Dummy
+### OriginQ Dummy {#guide-submit-task-originq-dummy}
 
 这是本地联调与测试路径，接口风格与远端提交相近，但不会真正连接真实量子平台，也不会消耗真实量子资源。
 
@@ -108,7 +117,7 @@ result = submit_task(
 )
 ```
 
-### Quafu
+### Quafu {#guide-submit-task-quafu}
 
 这是独立的第三方云平台接入路径，适合已经确认要接入 Quafu 平台，并已准备好对应依赖与平台 Token 的读者。
 
@@ -129,7 +138,7 @@ task_id = submit_task(
 )
 ```
 
-### IBM Quantum
+### IBM Quantum {#guide-submit-task-ibm}
 
 这是 IBM Quantum 的独立接入路径，适合明确要使用 IBM 生态、并接受其依赖与账号体系的读者。
 
@@ -150,7 +159,7 @@ task_id = submit_task(
 )
 ```
 
-### Legacy OriginQ（`qpandalite.task.originq`）
+### Legacy OriginQ（`qpandalite.task.originq`） {#guide-submit-task-legacy-originq}
 
 这是旧的 OriginQ 接口说明。根据当前代码实现，`qpandalite.task.originq` 在当前版本中不可用，并在导入时直接提示应改用 `qpandalite.task.origin_qcloud`。
 
@@ -169,12 +178,12 @@ task_id = submit_task(
 - **平台输入格式不同**：OriginQ Cloud / Dummy 更偏向 `originir` 路径，Quafu 与 IBM 示例则使用 `qasm` 路径。
 - **平台成熟度不同**：OriginQ Cloud 是当前主生产路径；Dummy 适合联调；Quafu / IBM 是独立平台接入；Legacy OriginQ 当前不可用。
 
-如果你还在反复修改线路结构、量子门或输出解释，说明你仍处于本地验证阶段，建议先回到 [本地模拟](simulation.md)。
+如果你还在反复修改线路结构、量子门或输出解释，说明你仍处于本地验证阶段，建议先回到 [本地模拟](simulation.md#guide-simulation)。
 
 ## 下一步与参考
 
-- 如果你还没有完成线路验证，先回到 [本地模拟](simulation.md)
-- 如果你还不清楚线路如何构建，先阅读 [构建量子线路](circuit.md)
+- 如果你还没有完成线路验证，先回到 [本地模拟](simulation.md#guide-simulation)
+- 如果你还不清楚线路如何构建，先阅读 [构建量子线路](circuit.md#guide-circuit)
 - 如果你已经确定目标平台，可继续查看对应模块 API：
   - `qpandalite.task.origin_qcloud`
   - `qpandalite.task.originq_dummy`

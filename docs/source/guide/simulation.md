@@ -1,12 +1,12 @@
-# 本地模拟
+# 本地模拟 {#guide-simulation}
 
-## 什么时候进入本页
+## 什么时候进入本页 {#guide-simulation-when-to-read}
 
 当你已经有一条线路，想在本地验证结果、查看概率分布、做多次采样，或比较不同模拟后端时，进入本页。
 
 本页解决的核心问题是：**如何把已经写好的线路跑起来，并根据目标选择合适的模拟方式与后端**。
 
-## 本页解决的问题
+## 本页解决的问题 {#guide-simulation-problems}
 
 - 如何把已有线路送入模拟器
 - 如何查看概率测量、状态向量、多次采样等不同输出
@@ -24,7 +24,7 @@
 
 如果你还不清楚如何创建线路、添加量子门或导出线路格式，建议先阅读 [构建量子线路](circuit.md)。
 
-## 推荐阅读顺序
+## 推荐阅读顺序 {#guide-simulation-reading-order}
 
 建议按以下顺序阅读本页内容：
 
@@ -36,7 +36,20 @@
 6. **后端对比** — 根据验证目标选择不同后端
 7. **已知限制** — 在使用 density matrix 或复杂噪声路径前优先确认
 
-## OriginIR 模拟器
+## 本地模拟入口总览 {#guide-simulation-entry-overview}
+
+在 QPanda-lite 中，“本地模拟”指的是**不提交远端任务、直接在当前环境运行线路并查看结果**。常见入口可以先按输入格式与验证目标来分：
+
+| 本地模拟入口 | 输入形式 | 适合先看什么问题 |
+| --- | --- | --- |
+| `OriginIR_Simulator` | `originir` 字符串 | 已经用 `Circuit` 构好线路，想先快速验证概率分布、状态向量或采样结果 |
+| `QASM_Simulator` | `qasm` 字符串 | 你的线路来自 OpenQASM 2.0，或准备沿着 QASM 路径与外部工具互操作 |
+| `OpcodeSimulator` | opcode 列表 | 需要更底层控制、特定后端或排查后端差异 |
+| `OriginIR_NoisySimulator` | `originir` 字符串 + 噪声配置 | 想在本地模拟阶段加入噪声模型并观察结果变化 |
+
+如果你还在决定线路该如何表达，先回到 [构建量子线路](circuit.md#guide-circuit)；如果你已经完成本地验证，准备提交到云平台或真机执行，转到 [提交任务](submit_task.md#guide-submit-task)。
+
+## OriginIR 模拟器 {#guide-simulation-originir}
 
 最常用的模拟器，直接模拟 OriginIR 格式的线路。
 
@@ -73,7 +86,7 @@ result = sim.simulate_shots(circuit.originir, shots=1000)
 # 返回 1000 次采样的统计结果
 ```
 
-## QASM 模拟器
+## QASM 模拟器 {#guide-simulation-qasm}
 
 模拟 OpenQASM 2.0 格式的线路。
 
@@ -84,7 +97,7 @@ sim = QASM_Simulator()
 prob = sim.simulate_pmeasure(qasm_str)
 ```
 
-## Opcode 模拟器
+## Opcode 模拟器与本地模拟后端 {#guide-simulation-opcode}
 
 底层模拟器，直接操作 opcode 列表。支持多后端：
 
@@ -100,7 +113,7 @@ sim = OpcodeSimulator(backend_type='statevector')
 
 > Opcode 的详细文档见 [Opcode](../advanced/opcode.md)。
 
-## 带噪声模拟
+## 带噪声的本地模拟 {#guide-simulation-noisy}
 
 ```python
 from qpandalite.simulator import OriginIR_NoisySimulator
@@ -127,7 +140,7 @@ prob = sim.simulate_pmeasure(circuit.originir)
 - 需要噪声模拟 → `OriginIR_NoisySimulator`（基于 density_matrix）
 - 复杂多比特噪声模型 → `density_matrix_qutip`
 
-## 已知限制
+## 已知限制 {#guide-simulation-known-limitations}
 
 - `crx`/`crz`/`cy` 受控旋转门在 density matrix 后端存在 bug（多门组合时出错），详见 [已知问题](./installation.md#known-issues)。
 - `controlled_by` 在 density matrix 路径下的模拟结果不正确。
