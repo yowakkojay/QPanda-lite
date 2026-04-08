@@ -107,7 +107,17 @@ QPanda-lite 是一个 Python 原生、轻量且强调透明性的量子计算框
 查阅型 API 参考
 ---------------
 
-以下内容更适合作为按模块检索和补充查阅使用；如果你是第一次接触项目，建议优先阅读上方导览路径，再按需进入 API 参考。
+以下内容更适合作为按模块检索和补充查阅使用；如果你是第一次接触项目，建议先按任务阅读上方的教程、格式互转与语言接口、进阶入口，再在已经明确模块名或接口需求时进入 API 参考。
+
+- 如果你想先理解“当前问题该去哪里看”，优先返回上方的教程、格式互转与语言接口、进阶三组入口。
+- 如果你已经知道自己要查哪个模块，再进入 :doc:`source/qpandalite` 查看 API 总览。
+- 如果你想查具体模块，请直接进入对应 API 页面：
+
+  - ``qpandalite.circuit_builder``：线路构建 API，对应教程页 :doc:`source/guide/circuit`
+  - ``qpandalite.simulator``：本地模拟 API，对应教程页 :doc:`source/guide/simulation`
+  - ``qpandalite.task``：提交任务 API，对应教程页 :doc:`source/guide/submit_task`
+  - ``qpandalite.originir`` / ``qpandalite.qasm``：格式与语言接口，对应教程页 :doc:`source/guide/originir` 与 :doc:`source/guide/qasm`
+  - ``qpandalite.analyzer`` / ``qpandalite.transpiler``：分析与格式互转能力，对应进阶页 :doc:`source/advanced/circuit_analysis`
 
 .. toctree::
    :maxdepth: 2

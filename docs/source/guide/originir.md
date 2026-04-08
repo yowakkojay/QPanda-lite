@@ -1,6 +1,6 @@
 # OriginIR
 
-## 什么时候看本页
+## 什么时候进入本页
 
 当你需要理解 `circuit.originir` 输出的文本格式，或者想知道 OriginIR 在 QPanda-lite 中扮演什么角色时，看本页。
 
@@ -230,9 +230,9 @@ MEASURE q[0], c[0]
 MEASURE q[1], c[1]
 ```
 
-## 相关页面
+## 下一步
 
-- [构建量子线路](circuit.md) — 如何用 `Circuit` API 构建线路并导出格式
-- [QASM](qasm.md) — OpenQASM 2.0 格式说明与格式互转
-- [本地模拟](simulation.md) — 使用 OriginIR 或 QASM 模拟器运行线路
-- [提交任务](submit_task.md) — 将线路提交到各平台真机运行
+- 如果你还不知道如何构建线路，先阅读 [构建量子线路](circuit.md)
+- 如果你想用 OriginIR 文本直接模拟，见 [本地模拟](simulation.md)
+- 如果你想提交到 OriginQ 平台，见 [提交任务](submit_task.md)
+- 如果你需要导出为 QASM 格式或做格式互转，见 [QASM](qasm.md)
