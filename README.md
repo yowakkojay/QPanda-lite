@@ -52,10 +52,10 @@ print(sim.simulate_shots(circuit.originir, shots=1000))
 
 | Concept | Type | Description |
 |---------|------|-------------|
-| **Opcode** | `Tuple` | A tuple representing a quantum operation: name, qubits, parameters, etc. [📖 Docs](https://qpanda-lite.readthedocs.io/en/latest/source/guide/opcode.html) |
-| **Circuit** | `Circuit` | A collection of opcodes representing a quantum program. Can be converted to OriginIR/QASM. [📖 Docs](https://qpanda-lite.readthedocs.io/en/latest/source/guide/build_circuit_simple.html) |
-| **Circuit String** | `str` | A string in [OriginIR](https://qpanda-lite.readthedocs.io/en/latest/source/guide/originir_simple.html) or [QASM](https://qpanda-lite.readthedocs.io/en/latest/source/guide/qasm.html) format, ready for backend execution. |
-| **Backend** | `Backend` | A [quantum simulator](https://qpanda-lite.readthedocs.io/en/latest/source/guide/simulation_simple.html) or hardware that executes a circuit. |
+| **Opcode** | `Tuple` | A tuple representing a quantum operation: name, qubits, parameters, etc. [📖 Docs](https://qpanda-lite.readthedocs.io/en/latest/source/advanced/opcode.html) |
+| **Circuit** | `Circuit` | A collection of opcodes representing a quantum program. Can be converted to OriginIR/QASM. [📖 Docs](https://qpanda-lite.readthedocs.io/en/latest/source/guide/circuit.html) |
+| **Circuit String** | `str` | A string in [OriginIR](https://qpanda-lite.readthedocs.io/en/latest/source/guide/originir.html) or [QASM](https://qpanda-lite.readthedocs.io/en/latest/source/guide/qasm.html) format, ready for backend execution. |
+| **Backend** | `Backend` | A [quantum simulator](https://qpanda-lite.readthedocs.io/en/latest/source/guide/simulation.html) or hardware that executes a circuit. |
 | **Result** | `dict` / `list` / `ndarray` | Execution results (measurements, states) in native Python data structures. |
 
 ---
@@ -106,31 +106,11 @@ pip install .
 
 ---
 
-## Quick Start
+## 任务提交与结果处理概览
 
-以下是最常见的用法概览，更多进阶内容请参见 [快速上手](https://qpanda-lite.readthedocs.io/en/latest/source/guide/quickstart.html)。
+以下是最常见的任务提交用法概览，更多进阶内容请参见 [快速上手](https://qpanda-lite.readthedocs.io/en/latest/source/guide/quickstart.html)。
 
-### 1. Build a Circuit
-
-```python
-from qpandalite.circuit_builder import Circuit
-
-c = Circuit()
-c.rx(1, 0.1)
-c.cnot(1, 0)
-c.measure(0, 1, 2, 3)
-print(c.circuit)
-```
-
-| Function | Code | Note |
-|----------|------|------|
-| Initialize circuit | `c = Circuit()` | No need to specify qubit count |
-| Add gate | `c.cnot(1, 2)` | Use qubit indices directly |
-| Measure | `c.measure(0, 1, 2)` | No mid-circuit measurement support |
-| Remap qubits | `c = c.remapping({0:10, 1:11})` | Returns a new `Circuit` |
-| Export to string | `c.circuit` / `c.originir` | Returns `str` |
-
-### 2. Run on Quantum Devices / Simulators
+### Run on Quantum Devices / Simulators
 
 | Function | Code | Note |
 |----------|------|------|
@@ -143,35 +123,7 @@ print(c.circuit)
 
 各平台（OriginQ / Quafu / IBM）的详细配置与提交方式请参见 [提交任务指南](https://qpanda-lite.readthedocs.io/en/latest/source/guide/submit_task.html)。
 
-### 3. Circuit Simulation
-
-```python
-import qpandalite.simulator as qsim
-
-sim = qsim.OriginIR_Simulator(reverse_key=False)
-
-originir = '''
-QINIT 72
-CREG 2
-RY q[45],(0.9424777960769379)
-RY q[46],(0.9424777960769379)
-CZ q[45],q[46]
-RY q[45],(-0.25521154)
-RY q[46],(0.26327053)
-X q[46]
-MEASURE q[45],c[0]
-MEASURE q[46],c[2]
-MEASURE q[52],c[1]
-'''
-
-res = sim.simulate(originir)
-print(res)
-print(sim.state)
-```
-
-更多模拟器选项与噪声模型请参见 [模拟器指南](https://qpanda-lite.readthedocs.io/en/latest/source/guide/simulation.html)。
-
-本地跑通后准备上云或真机？继续阅读 [提交任务指南](https://qpanda-lite.readthedocs.io/en/latest/source/guide/submit_task.html)。
+更多模拟器选项与噪声模型请参见 [本地模拟指南](https://qpanda-lite.readthedocs.io/en/latest/source/guide/simulation.html)。
 
 ---
 

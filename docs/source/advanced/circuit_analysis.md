@@ -43,7 +43,7 @@ draw_circuit(circuit)
 
 ## 线路转译
 
-QPanda-lite 支持在 OriginIR 和 QASM 格式之间互相转换。
+QPanda-lite 支持 OriginIR 和 QASM 格式互转。
 
 ```python
 # Circuit 同时支持两种格式输出
