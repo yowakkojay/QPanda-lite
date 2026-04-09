@@ -135,10 +135,10 @@ draw_circuit(circuit)
 
 本页聚焦于“如何把线路写出来”，以下问题不在本页展开：
 
-- 模拟结果怎么看、如何选择本地模拟后端 → 见 [本地模拟](simulation.md#guide-simulation)
+- 模拟结果怎么看、如何选择本地模拟后端 → 见 [本地模拟](simulation.md#guide-simulation-entry-overview)
 - 噪声模型与性能权衡 → 见 [噪声模拟](../advanced/noise_simulation.md)
-- 如何提交到真机或云平台 → 见 [提交任务](submit_task.md#guide-submit-task)
+- 如何提交到真机或云平台 → 见 [提交任务](submit_task.md#guide-submit-task-entry-overview)
 
 ## 下一步
 
-当你已经能生成 `circuit.originir` 或 `circuit.qasm`，且想在本地验证线路结果、比较不同模拟方式或做带噪声测试时，进入 [本地模拟](simulation.md#guide-simulation)。如果你已经完成本地验证，准备把线路提交到云平台或真机执行，则进入 [提交任务](submit_task.md#guide-submit-task)。
+当你已经能生成 `circuit.originir` 或 `circuit.qasm`，且想在本地验证线路结果、比较不同模拟方式或做带噪声测试时，进入 [本地模拟](simulation.md#guide-simulation-entry-overview)。如果你已经完成本地验证，准备把线路提交到云平台或真机执行，则进入 [提交任务](submit_task.md#guide-submit-task-entry-overview)。

@@ -49,7 +49,7 @@
 - 本地模拟：在当前环境直接运行线路，重点是验证线路是否正确，以及如何选择本地模拟后端。
 - 提交任务：把线路交给云平台或真机执行，重点是平台配置、任务提交、状态查询与结果获取。
 
-如果你仍在反复修改线路结构、量子门或输出解释，说明你还处在本地验证阶段，建议先回到 [本地模拟](simulation.md#guide-simulation)。
+如果你仍在反复修改线路结构、量子门或输出解释，说明你还处在本地验证阶段，建议先回到 [本地模拟](simulation.md#guide-simulation-entry-overview)。
 
 ## 平台选择说明 {#guide-submit-task-platform-selection}
 
@@ -178,12 +178,12 @@ task_id = submit_task(
 - **平台输入格式不同**：OriginQ Cloud / Dummy 更偏向 `originir` 路径，Quafu 与 IBM 示例则使用 `qasm` 路径。
 - **平台成熟度不同**：OriginQ Cloud 是当前主生产路径；Dummy 适合联调；Quafu / IBM 是独立平台接入；Legacy OriginQ 当前不可用。
 
-如果你还在反复修改线路结构、量子门或输出解释，说明你仍处于本地验证阶段，建议先回到 [本地模拟](simulation.md#guide-simulation)。
+如果你还在反复修改线路结构、量子门或输出解释，说明你仍处于本地验证阶段，建议先回到 [本地模拟](simulation.md#guide-simulation-entry-overview)。
 
 ## 下一步与参考
 
-- 如果你还没有完成线路验证，先回到 [本地模拟](simulation.md#guide-simulation)
-- 如果你还不清楚线路如何构建，先阅读 [构建量子线路](circuit.md#guide-circuit)
+- 如果你还没有完成线路验证，先回到 [本地模拟](simulation.md#guide-simulation-entry-overview)
+- 如果你还不清楚线路如何构建，先阅读 [构建量子线路](circuit.md#guide-circuit-when-to-read)
 - 如果你已经确定目标平台，可继续查看对应模块 API：
   - `qpandalite.task.origin_qcloud`
   - `qpandalite.task.originq_dummy`

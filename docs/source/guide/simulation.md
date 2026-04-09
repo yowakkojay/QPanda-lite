@@ -47,7 +47,7 @@
 | `OpcodeSimulator` | opcode 列表 | 需要更底层控制、特定后端或排查后端差异 |
 | `OriginIR_NoisySimulator` | `originir` 字符串 + 噪声配置 | 想在本地模拟阶段加入噪声模型并观察结果变化 |
 
-如果你还在决定线路该如何表达，先回到 [构建量子线路](circuit.md#guide-circuit)；如果你已经完成本地验证，准备提交到云平台或真机执行，转到 [提交任务](submit_task.md#guide-submit-task)。
+如果你还在决定线路该如何表达，先回到 [构建量子线路](circuit.md#guide-circuit-when-to-read)；如果你已经完成本地验证，准备提交到云平台或真机执行，转到 [提交任务](submit_task.md#guide-submit-task-entry-overview)。
 
 ## OriginIR 模拟器 {#guide-simulation-originir}
 

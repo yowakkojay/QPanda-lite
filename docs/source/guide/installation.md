@@ -118,4 +118,4 @@ pip install qiskit-ibmq-provider
 ## 下一步
 
 - [快速上手](quickstart.md) —— 运行安装后的第一个最小示例
-- [README 中的快速示例](../../../README.md#quick-example) —— 先快速浏览仓库首页示例与入口说明
+- [README 中的快速示例](https://github.com/Agony5757/QPanda-lite#quick-example) —— 先快速浏览仓库首页示例与入口说明
